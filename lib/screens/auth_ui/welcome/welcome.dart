@@ -1,6 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ec_project/constants/asset_images.dart';
+import 'package:flutter_ec_project/constants/routes.dart';
+import 'package:flutter_ec_project/screens/auth_ui/login/login.dart';
+import 'package:flutter_ec_project/screens/auth_ui/sign_up/sing_up.dart';
+import 'package:flutter_ec_project/widgets/primary_button/primary_button.dart';
+import 'package:flutter_ec_project/widgets/top_titles/top_titles.dart';
 import 'package:gap/gap.dart';
 
 class Welcome extends StatelessWidget {
@@ -14,18 +19,7 @@ class Welcome extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Gap(kToolbarHeight + 12),
-          Text(
-            'Welcome',
-            style: TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          Gap(12),
-          Text(
-            'Buy any item from using app',
-          ),
+          const TopTitles(title: "Welcome2", subtitle: "Buy any item from using app2"),
           Center(
             child: Image.asset(
               AssetsImages.instance.welcomeImage,
@@ -53,15 +47,14 @@ class Welcome extends StatelessWidget {
               ),
             ],
           ),
+          const Gap(30),
+          PrimaryButton(title: 'Login', onPressed: (){
+            Routes.instance.push(widget: const Login(), context: context);
+          },),
           const Gap(10),
-          SizedBox(
-            height: 45,
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () {},
-              child: const Text('Login'),
-            ),
-          ),
+          PrimaryButton(title: 'Sign Up',onPressed: (){
+            Routes.instance.push(widget: const SignUp(), context: context);
+          },),
         ],
       ),
     ));
