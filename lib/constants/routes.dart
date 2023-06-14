@@ -5,7 +5,7 @@ import 'package:flutter_ec_project/screens/auth_ui/login/login.dart';
 class Routes {
   static Routes instance = Routes();
 
-  Future<dynamic> pushAndRemoveUntil(Widget widget, BuildContext context){
+  Future<dynamic> pushAndRemoveUntil({ required Widget widget, required BuildContext context}){
     return Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (ctx)=> widget),(route)=> false);
   }
