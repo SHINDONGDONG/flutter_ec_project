@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ec_project/constants/constants.dart';
 import 'package:flutter_ec_project/constants/routes.dart';
+import 'package:flutter_ec_project/firebase_helper/firebase_auth_helper/firebase_auth_helper.dart';
 import 'package:flutter_ec_project/screens/auth_ui/login/login.dart';
 import 'package:flutter_ec_project/screens/home/home.dart';
 import 'package:flutter_ec_project/widgets/primary_button/primary_button.dart';
@@ -16,6 +18,10 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   bool isShowPassword = true;
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  TextEditingController name = TextEditingController();
+  TextEditingController phone = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +34,16 @@ class _SignUpState extends State<SignUp> {
             children: [
               TopTitles(title: "Create Account", subtitle: "Welcome to Store"),
               const Gap(46.0),
-              const TextField(
+              TextField(
+                controller: name,
                 decoration: InputDecoration(
                   hintText: "Name",
                   prefixIcon: Icon(Icons.person_outline),
                 ),
               ),
               const Gap(12.0),
-              const TextField(
+              TextField(
+                controller: email,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   hintText: "E-mail",
@@ -43,7 +51,8 @@ class _SignUpState extends State<SignUp> {
                 ),
               ),
               const Gap(12.0),
-              const TextField(
+              TextField(
+                controller: phone,
                 decoration: InputDecoration(
                   hintText: "Phone",
                   prefixIcon: Icon(Icons.phone_outlined),
@@ -51,6 +60,7 @@ class _SignUpState extends State<SignUp> {
               ),
               const Gap(12.0),
               TextField(
+                controller: password,
                 obscureText: isShowPassword,
                 decoration: InputDecoration(
                   hintText: "Password",
@@ -70,8 +80,15 @@ class _SignUpState extends State<SignUp> {
               const Gap(48.0),
               PrimaryButton(
                 title: "Create an Account",
-                onPressed: () {
-                  Routes.instance.push(widget: const Home(), context: context);
+                onPressed: () async {
+                  bool isVaildated = signUpVaildation(email.text, password.text, name.text, phone.text);
+                  if(isVaildated) {
+                    bool isLogined = await FirebaseAuthHelper.instance.signUp(email.text, password.text, context);
+                    if(isLogined) {
+                      //PushandRemoveUntil은
+                      Routes.instance.pushAndRemoveUntil(widget: const Home(), context: context);
+                    }
+                  }
                 },
               ),
               const Gap(12.0),
