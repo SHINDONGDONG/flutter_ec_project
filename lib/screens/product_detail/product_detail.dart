@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ec_project/constants/constants.dart';
 import 'package:flutter_ec_project/constants/routes.dart';
 import 'package:flutter_ec_project/models/product_model/product.dart';
+import 'package:flutter_ec_project/provider/app_provider.dart';
 import 'package:flutter_ec_project/screens/cart_screen/cart_screen.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
 
 class ProductDetails extends StatefulWidget {
   final ProductModel singleProduct;
@@ -35,30 +38,30 @@ class _ProductDetailsState extends State<ProductDetails> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(
-              widget.singleProduct.image,
-              height: 400,
-              width: 400,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  widget.singleProduct.name,
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                IconButton(
-                  onPressed: () {
-                    setState(() {
-                      widget.singleProduct.isFavourite = !widget.singleProduct.isFavourite;
-                    });
-                  },
-                  icon: Icon(widget.singleProduct.isFavourite
-                      ? Icons.favorite
-                      : Icons.favorite_border),
-                ),
-              ],
-            ),
+              Image.network(
+                widget.singleProduct.image,
+                fit: BoxFit.contain,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    widget.singleProduct.name,
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        widget.singleProduct.isFavourite = !widget.singleProduct.isFavourite;
+                      });
+                    },
+                    icon: Icon(widget.singleProduct.isFavourite
+                        ? Icons.favorite
+                        : Icons.favorite_border),
+                  ),
+                ],
+              ),
+
             Text(widget.singleProduct.description),
             const Gap(12.0),
             Row(
@@ -104,7 +107,9 @@ class _ProductDetailsState extends State<ProductDetails> {
               children: [
                 OutlinedButton(
                   onPressed: () {
-
+                    AppProvider appProvider = Provider.of<AppProvider>(context,listen: false);
+                    appProvider.addCartProduct(widget.singleProduct);
+                    showMessage("added to cart");
                   },
                   child: const Text("Add to cart"),
                 ),
