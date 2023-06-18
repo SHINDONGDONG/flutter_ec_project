@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ec_project/constants/constants.dart';
 import 'package:flutter_ec_project/constants/routes.dart';
 import 'package:flutter_ec_project/firebase_helper/firebase_auth_helper/firebase_auth_helper.dart';
-import 'package:flutter_ec_project/screens/auth_ui/login/login.dart';
 import 'package:flutter_ec_project/screens/home/home.dart';
 import 'package:flutter_ec_project/widgets/primary_button/primary_button.dart';
 import 'package:flutter_ec_project/widgets/top_titles/top_titles.dart';

@@ -9,7 +9,7 @@ class ProductModel {
   ProductModel({
     required this.id,
     required this.name,
-    required this.email,
+    // required this.email,
     required this.image,
     required this.price,
     required this.description,
@@ -20,9 +20,9 @@ class ProductModel {
   String id;
   String name;
   bool isFavourite;
-  String email;
+  // String? email;
   String image;
-  String price;
+  double price;
   String description;
   String status;
 
@@ -30,21 +30,21 @@ class ProductModel {
   factory ProductModel.fromJson(Map<String,dynamic> json) => ProductModel(
       id: json["id"],
       name: json["name"],
-      email: json["email"],
-      price: json["price"],
+      // email: json["email"],
+      price: double.parse(json["price"].toString()),
       description: json["description"],
       isFavourite: false,
-    status: json["status"],
-    image: json["image"],
+      status: json["status"],
+      image: json["image"],
       );
 
   Map<String,dynamic> toJson() => {
     "id":id,
     "name":name,
-    "email":email,
+    // "email":email,
     "price":price,
     "description":description,
-    "isFavourite":isFavourite,
+    // "isFavourite":isFavourite,
     "status":status,
     "image":image,
   };

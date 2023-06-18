@@ -3,6 +3,15 @@ import 'package:flutter/material.dart';
  ThemeData themeData = ThemeData(
   scaffoldBackgroundColor: Colors.white,
   primaryColor: Colors.red,
+  outlinedButtonTheme: OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(
+      foregroundColor: Colors.red,
+      disabledForegroundColor: Colors.red,
+      side: const BorderSide(color: Colors.red, width: 1.7,
+      ),
+      textStyle: const TextStyle(color: Colors.red),
+    ),
+  ),
   inputDecorationTheme: InputDecorationTheme(
     border: outlineInputBorder,
     errorBorder: outlineInputBorder,

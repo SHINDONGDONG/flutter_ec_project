@@ -2,8 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ec_project/constants/constants.dart';
-import 'package:flutter_ec_project/constants/routes.dart';
-import 'package:flutter_ec_project/screens/home/home.dart';
 
 class FirebaseAuthHelper{
   static FirebaseAuthHelper instance = FirebaseAuthHelper();

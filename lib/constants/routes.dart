@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ec_project/screens/auth_ui/login/login.dart';
 
 class Routes {
   static Routes instance = Routes();
