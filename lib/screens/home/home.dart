@@ -1,9 +1,13 @@
 import 'dart:core';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ec_project/constants/routes.dart';
 import 'package:flutter_ec_project/firebase_helper/firebase_store/firebase_firestore.dart';
 import 'package:flutter_ec_project/models/category_model/category_model.dart';
 import 'package:flutter_ec_project/models/product_model/product.dart';
+import 'package:flutter_ec_project/screens/category_view/caregory_view.dart';
+import 'package:flutter_ec_project/screens/product_detail/product_detail.dart';
 import 'package:flutter_ec_project/widgets/top_titles/top_titles.dart';
 import 'package:gap/gap.dart';
 
@@ -79,18 +83,27 @@ class _HomeState extends State<Home> {
                           .map(
                             (e) => Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Card(
-                                color: Colors.white,
-                                elevation: 6,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
-                                child: SizedBox(
-                                    height: 100,
-                                    width: 100,
-                                  child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Image.network(e.image)),
+                              child: CupertinoButton(
+                                padding: EdgeInsets.zero,
+                                onPressed: () {
+                                  Routes.instance.push(
+                                      widget: CategoryView(
+                                          categoryModel: e,),
+                                      context: context);
+                                },
+                                child: Card(
+                                  color: Colors.white,
+                                  elevation: 3,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                  child: SizedBox(
+                                      height: 100,
+                                      width: 100,
+                                    child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image.network(e.image)),
+                                  ),
                                 ),
                               ),
                             ),
@@ -157,7 +170,13 @@ class _HomeState extends State<Home> {
                             width: 140,
                             height: 45,
                             child: OutlinedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                      Routes.instance.push(
+                                          widget: ProductDetails(
+                                            singleProduct: singleProduct,
+                                          ),
+                                          context: context);
+                                    },
                               child: const Text(
                                 "Buy",
                               ),

@@ -25,14 +25,24 @@ import 'package:flutter/material.dart';
     style: ElevatedButton.styleFrom(
       backgroundColor: Colors.red,
       disabledBackgroundColor: Colors.grey,
-      textStyle: TextStyle(
+      textStyle: const TextStyle(
         fontSize: 18.0,
       ),
     ),
   ),
+   primarySwatch: Colors.red,
+   canvasColor: Colors.red,
+   appBarTheme: const AppBarTheme(
+     elevation: 0.0,
+     backgroundColor: Colors.white,
+     iconTheme: IconThemeData(color: Colors.black),
+     toolbarTextStyle: TextStyle(
+       color: Colors.black
+     ),
+   )
 );
 
-OutlineInputBorder outlineInputBorder = OutlineInputBorder(
+OutlineInputBorder outlineInputBorder = const OutlineInputBorder(
     borderSide: BorderSide(
   color: Colors.grey,
 ));
