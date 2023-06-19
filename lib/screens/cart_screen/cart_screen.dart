@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ec_project/models/product_model/product.dart';
 import 'package:flutter_ec_project/provider/app_provider.dart';
-import 'package:flutter_ec_project/screens/cart_screen/widget/cart_screen_state.dart';
+import 'package:flutter_ec_project/screens/cart_screen/widget/single_cart_item.dart';
 import 'package:provider/provider.dart';
 
 class CartScreen extends StatefulWidget {
@@ -30,8 +30,12 @@ class _CartScreenState extends State<CartScreen> {
           ),
         ),
       ),
-      body: ListView.builder(
-          itemCount: appProvider.getCartProductList.length,
+      body: appProvider.getCartProductList.isEmpty
+          ? Center(
+              child: Text("Empty Cart"),
+            )
+          : ListView.builder(
+              itemCount: appProvider.getCartProductList.length,
           padding: const EdgeInsets.all(12),
           itemBuilder: (ctx, index) {
             return SingleCartItemState(singleProduct: cartProducts.elementAt(index));
