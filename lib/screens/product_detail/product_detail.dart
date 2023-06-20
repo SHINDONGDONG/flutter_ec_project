@@ -5,7 +5,6 @@ import 'package:flutter_ec_project/constants/routes.dart';
 import 'package:flutter_ec_project/models/product_model/product.dart';
 import 'package:flutter_ec_project/provider/app_provider.dart';
 import 'package:flutter_ec_project/screens/cart_screen/cart_screen.dart';
-import 'package:flutter_ec_project/screens/favourite_screen/favourite_screen.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
@@ -130,8 +129,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                     width: 140,
                     child: ElevatedButton(
                       onPressed: () {
-                        Routes.instance.push(
-                            widget: const FavouriteScreen(), context: context);
+                        // Routes.instance.push(
+                        //     widget: const FavouriteScreen(), context: context);
                       },
                       child: const Text("Buy"),
                     ),

@@ -82,7 +82,7 @@ class _SignUpState extends State<SignUp> {
                 onPressed: () async {
                   bool isVaildated = signUpVaildation(email.text, password.text, name.text, phone.text);
                   if(isVaildated) {
-                    bool isLogined = await FirebaseAuthHelper.instance.signUp(email.text, password.text, context);
+                    bool isLogined = await FirebaseAuthHelper.instance.signUp(name.text, email.text, password.text, context);
                     if(isLogined) {
                       //PushandRemoveUntil은
                       Routes.instance.pushAndRemoveUntil(widget: const Home(), context: context);

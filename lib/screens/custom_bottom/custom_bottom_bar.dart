@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ec_project/screens/account_screen/account_screen.dart';
 import 'package:flutter_ec_project/screens/cart_screen/cart_screen.dart';
 import 'package:flutter_ec_project/screens/favourite_screen/favourite_screen.dart';
 import 'package:flutter_ec_project/screens/home/home.dart';
@@ -18,10 +19,10 @@ class _CustomButtomBarState extends State<CustomButtomBar> {
 
 
   List<Widget> _buildScreens() => [
-    Home(),
-    CartScreen(),
-    FavouriteScreen(),
-    FavouriteScreen(),
+    const Home(),
+    const CartScreen(),
+    const FavouriteScreen(),
+    const AccountScreen(),
   ];
 
   List<PersistentBottomNavBarItem> _navBarsItems() => [
@@ -49,7 +50,7 @@ class _CustomButtomBarState extends State<CustomButtomBar> {
     PersistentBottomNavBarItem(
       icon: const Icon(Icons.person),
       inactiveIcon: const Icon(Icons.person_outline),
-      title: "Profile",
+      title: "Account",
       activeColorPrimary: Colors.white,
       inactiveColorPrimary: Colors.white,
     ),
