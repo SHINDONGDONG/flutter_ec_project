@@ -4,6 +4,7 @@ import 'package:flutter_ec_project/constants/constants.dart';
 import 'package:flutter_ec_project/constants/routes.dart';
 import 'package:flutter_ec_project/firebase_helper/firebase_auth_helper/firebase_auth_helper.dart';
 import 'package:flutter_ec_project/screens/auth_ui/sign_up/sing_up.dart';
+import 'package:flutter_ec_project/screens/custom_bottom/custom_bottom_bar.dart';
 import 'package:flutter_ec_project/widgets/primary_button/primary_button.dart';
 import 'package:flutter_ec_project/widgets/top_titles/top_titles.dart';
 import 'package:gap/gap.dart';
@@ -76,7 +77,7 @@ class _LoginState extends State<Login> {
                   login(email.text, password.text, context);
                   if(isLogin) {
                     Routes.instance.pushAndRemoveUntil(
-                        widget: const Home(), context: context);
+                        widget: const CustomButtomBar(), context: context);
                   }
                 }
               }),

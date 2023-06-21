@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ec_project/constants/constants.dart';
 import 'package:flutter_ec_project/constants/routes.dart';
 import 'package:flutter_ec_project/firebase_helper/firebase_auth_helper/firebase_auth_helper.dart';
+import 'package:flutter_ec_project/screens/custom_bottom/custom_bottom_bar.dart';
 import 'package:flutter_ec_project/screens/home/home.dart';
 import 'package:flutter_ec_project/widgets/primary_button/primary_button.dart';
 import 'package:flutter_ec_project/widgets/top_titles/top_titles.dart';
@@ -85,7 +86,8 @@ class _SignUpState extends State<SignUp> {
                     bool isLogined = await FirebaseAuthHelper.instance.signUp(name.text, email.text, password.text, context);
                     if(isLogined) {
                       //PushandRemoveUntil은
-                      Routes.instance.pushAndRemoveUntil(widget: const Home(), context: context);
+                      Routes.instance.pushAndRemoveUntil(
+                          widget: const CustomButtomBar(), context: context);
                     }
                   }
                 },

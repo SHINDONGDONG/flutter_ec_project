@@ -40,7 +40,7 @@ class FirebaseFirestoreHelper {
     }
   }
 
-  Future<UserModel> getUserInformation(String id) async {
+  Future<UserModel> getUserInformation() async {
       DocumentSnapshot<Map<String, dynamic>> querySnapshot =
           await _firebaseFirestore
           .collection("users")
