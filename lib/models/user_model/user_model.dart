@@ -33,4 +33,16 @@ class UserModel {
     "image":image,
     "email":email,
   };
+
+
+  UserModel coptyWith({
+    String? name, image,
+  }) =>
+      UserModel(
+        name: name ?? this.name,
+        image: image ?? this.image,
+        email: email,
+        id: id,
+      );
+
 }

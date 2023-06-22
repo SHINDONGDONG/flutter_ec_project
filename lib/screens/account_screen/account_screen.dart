@@ -92,7 +92,9 @@
 // }
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ec_project/constants/routes.dart';
 import 'package:flutter_ec_project/provider/app_provider.dart';
+import 'package:flutter_ec_project/screens/edit_profile/edit_profile.dart';
 import 'package:flutter_ec_project/widgets/primary_button/primary_button.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
@@ -141,7 +143,9 @@ class AccountScreen extends StatelessWidget {
                         width: 130,
                         child: PrimaryButton(
                           title: "프로필 편집",
-                          onPressed: () {},
+                          onPressed: () {
+                            Routes.instance.push(widget: const EditProfile(), context: context);
+                          },
                         ),
                       ),
                     ],
