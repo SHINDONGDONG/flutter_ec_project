@@ -127,6 +127,7 @@ class AccountScreen extends StatelessWidget {
                     children: [
                       appProvider.getUserInformation.image == null
                           ? Icon(
+
                         Icons.person_outline,
                         size: 150,
                       )
